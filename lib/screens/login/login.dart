@@ -1,7 +1,10 @@
+import 'package:VRP_Frontend_Flutter/utils/flushbar.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-import 'package:VRP_Frontend_Flutter/screens/home/home_screen.dart';
+import 'package:VRP_Frontend_Flutter/home_screen.dart';
 import 'package:VRP_Frontend_Flutter/utils/color_constants.dart';
-import 'package:VRP_Frontend_Flutter/screens/home/background_screen.dart';
+import 'package:VRP_Frontend_Flutter/background_screen.dart';
+import 'package:VRP_Frontend_Flutter/appbar.dart';
 
 class Login extends StatefulWidget {
   Login({Key key, this.title}) : super(key: key);
@@ -42,13 +45,13 @@ class _LoginState extends State<Login> {
       width: MediaQuery.of(context).size.width / 2.5,
       child: RaisedButton(
         onPressed: () {
+          Navigator.of(context).pop();
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(
-                builder: (context) => BackgroundScreen(
-                      loginSuccess: true,
-                    )),
+            MaterialPageRoute(builder: (context) => HomeScreen()),
           );
+          FlushBar flushbar = FlushBar(context: context, text: '로그인 되었어요');
+          flushbar.showFlushbar();
         },
         padding: EdgeInsets.all(12),
         color: ColorConstants.blue,
@@ -72,6 +75,8 @@ class _LoginState extends State<Login> {
     );
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar:
+          homeAppbar(context: context, beforeLogin: true, currentPage: 'login'),
       body: Stack(
         children: <Widget>[
           Column(

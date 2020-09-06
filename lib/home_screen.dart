@@ -8,7 +8,8 @@ import 'package:VRP_Frontend_Flutter/screens/hero/hero_screen.dart';
 import 'package:VRP_Frontend_Flutter/utils/color_constants.dart';
 import 'package:VRP_Frontend_Flutter/objects/event.dart';
 import 'package:VRP_Frontend_Flutter/objects/user.dart';
-import 'package:VRP_Frontend_Flutter/screens/event/event_detail.dart';
+import 'package:VRP_Frontend_Flutter/screens/event/event_detail_screen.dart';
+import 'appbar.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -55,6 +56,8 @@ class HomeScreenState extends State<HomeScreen>
       //     ),
       //   ],
       // ),
+      appBar: homeAppbar(
+          context: context, beforeLogin: false, currentPage: 'home_screen'),
       body: Center(
         child: Column(
           children: [
